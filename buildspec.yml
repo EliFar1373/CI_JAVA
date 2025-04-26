@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17  # Use Amazon Corretto 17 (or whatever Java version you need)
+  pre_build:
+    commands:
+      - echo Installing dependencies...
+      - mvn clean install -DskipTests  # Install project dependencies, but skip tests for now
+  build:
+    commands:
+      - echo Running unit tests with JUnit...
+      - mvn test  # Run unit tests
+      - echo Running integration tests...
+      - mvn failsafe:integration-test failsafe:verify  # Run integration tests with Failsafe
+      - echo Packaging application...
+      - mvn package  # Package your application into a JAR file
+artifacts:
+  files:
+    - target/*.jar  # Include the JAR file as the build artifact
