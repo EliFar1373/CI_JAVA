@@ -77,6 +77,13 @@
                     <target>11</target>
                 </configuration>
             </plugin>
+            
+             <!-- Spring Boot Maven Plugin -->
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+        
         </plugins>
     </build>
 
